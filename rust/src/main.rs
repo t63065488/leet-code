@@ -1,7 +1,9 @@
 mod merge_sorted_array;
+mod remove_element;
 use std::vec;
 
 use merge_sorted_array::merge;
+use remove_element::remove_element;
 
 fn main() {
     // Test 1
@@ -24,4 +26,16 @@ fn main() {
     size_a = 0;
     size_b = 1;
     merge(&mut vec_a, size_a, &mut vec_b, size_b);
+
+    // Remove Element
+
+    //Test 1
+    vec_a = vec![3,2,2,3];
+    size_a = 3;
+    remove_element(&mut vec_a, size_a);
+
+    // Test 2
+    vec_a = vec![0,1,2,2,3,0,4,2];
+    size_a = 2;
+    remove_element(&mut vec_a, size_a);
 }
