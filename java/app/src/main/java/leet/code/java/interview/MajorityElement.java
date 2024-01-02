@@ -6,18 +6,15 @@ import java.util.Map.Entry;
 public class MajorityElement {
     public int majorityElement(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        int maxKey = 0;
-        int maxValue = 0;
+        int n = nums.length / 2;
         for(int num: nums) {
-            Integer value = map.getOrDefault(num, null);
-            map.put(num, value == null ? 1 : ++value);
+            map.put(num,  map.getOrDefault(num, 0) + 1);
         }
         for(Entry<Integer, Integer> entry : map.entrySet()) {
-            if(entry.getValue() > maxValue) {
-                maxValue = entry.getValue();
-                maxKey = entry.getKey();
+            if(entry.getValue() > n) {
+                return entry.getKey();
             }
         }
-        return maxKey;
+        return 0;
     }    
 }
