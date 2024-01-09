@@ -2,31 +2,30 @@ package leet.code.java.interview;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class MajorityElementTest {
 
     MajorityElement majorityElement = new MajorityElement();
 
-    @Test
-    void testMajorityElementExample1() {
+    @ParameterizedTest
+    @MethodSource("numsProvider")
+    void testMajorityElement(int[] nums , int expectedOutput) {
         // Given
-        int[] nums = {3,2,3};
-        int expectedOutput = 3;
         // When
         int result = majorityElement.majorityElement(nums);
         // Then
         assertEquals(result, expectedOutput);
     }
 
-    @Test
-    void testMajorityElementExample2() {
-        // Given
-        int[] nums = {2,2,1,1,1,2,2};
-        int expectedOutput = 2;
-        // When
-        int result = majorityElement.majorityElement(nums);
-        // Then
-        assertEquals(result, expectedOutput);
+    static Stream<Arguments> numsProvider() {
+        // return Stream.of((Object) new int[]{3,2,3}, 3).map(Arguments::of);
+        return Stream.of(Arguments.arguments(new int[]{3,2,3}, 3), 
+        Arguments.arguments(new int[]{2,2,1,1,1,2,2}, 2));
     }
 }
