@@ -24,7 +24,6 @@ public class MajorityElementTest {
     }
 
     static Stream<Arguments> numsProvider() {
-        // return Stream.of((Object) new int[]{3,2,3}, 3).map(Arguments::of);
         return Stream.of(Arguments.arguments(new int[]{3,2,3}, 3), 
         Arguments.arguments(new int[]{2,2,1,1,1,2,2}, 2));
     }
