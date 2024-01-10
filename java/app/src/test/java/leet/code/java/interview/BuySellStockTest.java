@@ -8,22 +8,25 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class MajorityElementTest {
+public class BuySellStockTest {
 
-    MajorityElement majorityElement = new MajorityElement();
+    BuySellStock buySellStock = new BuySellStock();
 
     @ParameterizedTest
     @MethodSource("numsProvider")
-    void testMajorityElement(int[] nums , int expectedOutput) {
+    void testMaxProfit(int[] input, int expectedResult) {
         // Given
         // When
-        int result = majorityElement.majorityElement(nums);
+        int result = buySellStock.maxProfit(input);
         // Then
-        assertEquals(result, expectedOutput);
+        assertEquals(expectedResult, result);
+
     }
 
     static Stream<Arguments> numsProvider() {
-        return Stream.of(Arguments.arguments(new int[]{3,2,3}, 3), 
-        Arguments.arguments(new int[]{2,2,1,1,1,2,2}, 2));
+        return Stream.of(
+            Arguments.arguments(new int[]{7,1,5,3,6,4}, 5), 
+            Arguments.arguments(new int[]{7,6,4,3,1}, 0)
+            );
     }
 }
